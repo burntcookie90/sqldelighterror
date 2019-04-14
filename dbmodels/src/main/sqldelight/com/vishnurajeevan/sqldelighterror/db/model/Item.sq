@@ -1,0 +1,34 @@
+CREATE TABLE item (
+    item_id INTEGER PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    quantity INTEGER NOT NULL
+);
+
+items:
+SELECT *
+FROM item;
+
+itemByName:
+SELECT *
+FROM item
+WHERE name = ?;
+
+itemByid:
+SELECT *
+FROM item
+WHERE item_id = ?
+LIMIT 1;
+
+itemsWithZeroQuantity:
+SELECT *
+FROM item
+WHERE quantity = 0;
+
+itemsWithNonZeroQuantity:
+SELECT *
+FROM item
+WHERE quantity > 0;
+
+addItem:
+INSERT INTO item(item_id, name, quantity)
+VALUES(?, ?, ?);
